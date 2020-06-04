@@ -10,6 +10,8 @@ syntax keyword potionFunction print join string
 
 syntax match potionComment "\v#.*$"
 
+syntax match potionOperator "\v:"
+syntax match potionOperator "\v\."
 syntax match potionOperator "\v\="
 syntax match potionOperator "\v\*"
 syntax match potionOperator "\v/"
