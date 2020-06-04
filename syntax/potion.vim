@@ -21,7 +21,7 @@ syntax match potionOperator "\v/\="
 syntax match potionOperator "\v\+\="
 syntax match potionOperator "\v-\="
 
-syntax match potionNumber "\v(0|[1-9][0-9]*)(\.[0-9]*)?(e(+|-)?[1-9][0-9]*)?"
+syntax match potionNumber "\v(0|[1-9][0-9]*)(\.[0-9]*)?(e(\+|-)?[1-9][0-9]*)?"
 syntax match potionNumber "\v0x[0-9a-fA-F]+"
 
 highlight link potionKeyword Keyword
