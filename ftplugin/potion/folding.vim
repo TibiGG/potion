@@ -6,7 +6,7 @@ function! NextNonBlankLine(lnum)
   let current = a:lnum + 1
 
   while current <= numlines
-    if getline(current) =~? `\v\S'
+    if getline(current) =~? '\v\S'
       return current
     endif
 
