@@ -25,8 +25,8 @@ function! s:GetPotionFold(lnum)
     return '-1'
   endif
 
-  let this_indent = s:IndentLevel(a:lnum)
-  let next_indent = s:IndentLevel(s:NextNonBlankLine(a:lnum))
+  let this_indent = <SID>IndentLevel(a:lnum)
+  let next_indent = <SID>IndentLevel(<SID>NextNonBlankLine(a:lnum))
 
   if next_indent == this_indent
     return this_indent
