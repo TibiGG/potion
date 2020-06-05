@@ -1,5 +1,5 @@
 setlocal foldmethod=expr
-setlocal foldexpr=<SID>GetPotionFold(v:lnum)
+setlocal foldexpr=GetPotionFold(v:lnum)
 
 function! s:NextNonBlankLine(lnum)
   let numlines = line('$')
@@ -20,13 +20,13 @@ function! s:IndentLevel(lnum)
   return indent(a:lnum) / &shiftwidth
 endfunction
 
-function! s:GetPotionFold(lnum)
+function! GetPotionFold(lnum)
   if getline(a:lnum) =~? '\v^\s*$'
     return '-1'
   endif
 
-  let this_indent = <SID>IndentLevel(a:lnum)
-  let next_indent = <SID>IndentLevel(<SID>NextNonBlankLine(a:lnum))
+  let this_indent = s:IndentLevel(a:lnum)
+  let next_indent = s:IndentLevel(s:NextNonBlankLine(a:lnum))
 
   if next_indent == this_indent
     return this_indent
