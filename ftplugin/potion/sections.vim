@@ -13,8 +13,10 @@ noremap <script> <buffer> <silent> []
 function! s:NextSection(type, backwards)
   if a:type == 1
     let pattern = '\v(\n\n^\S|%^)'
+    let flags = 'e'
   elseif a:type == 2
     let pattern = 'two'
+    let flags = ''
   endif
 
   if a:backwards
@@ -23,5 +25,5 @@ function! s:NextSection(type, backwards)
     let dir = '/'
   endif
 
-  execute 'silent normal! ' . dir . pattern . "\r"
+  execute 'silent normal! ' . dir . pattern . dir . flags . "\r"
 endfunction
