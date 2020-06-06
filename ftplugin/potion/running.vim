@@ -16,6 +16,12 @@ function! PotionShowBytecode()
   " Get the bytecode.
   let bytecode = system(g:potion_command . " -c -V " . bufname("%"))
 
+  " Check if a syntax error occurred and return
+  if match(bytecode, '\vSyntax error') != -1
+    echom bytecode
+    return
+  endif
+
   " Open a new split and set it up.
   vsplit __Potion_Bytecode__
   normal! ggdG
