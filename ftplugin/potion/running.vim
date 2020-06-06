@@ -22,11 +22,18 @@ function! PotionShowBytecode()
     return
   endif
 
-  " Open a new split and set it up.
-  vsplit __Potion_Bytecode__
+  let potion_bytecode_buffer = bufwinnr("__Potion_Bytecode__")
+
+  if potion_bytecode_buffer == -1
+    " Open a new split and set it up.
+    vsplit __Potion_Bytecode__
+    setlocal filetype=potionbytecode
+    setlocal buftype=nofile
+  else
+    " Move to existing buffer
+    execute potion_bytecode_buffer . "wincmd w"
+  endif
   normal! ggdG
-  setlocal filetype=potionbytecode
-  setlocal buftype=nofile
 
   " Insert the bytecode.
   call append(0, split(bytecode, '\v\n'))
