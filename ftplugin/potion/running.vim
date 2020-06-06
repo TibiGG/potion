@@ -29,5 +29,5 @@ function! PotionShowBytecode()
 endfunction
 
 function! s:SaveCurrentBuffer()
-  normal! :w
+  execute 'normal! :w<cr>'
 endfunction
