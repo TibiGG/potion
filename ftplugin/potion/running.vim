@@ -6,11 +6,14 @@ nnoremap <buffer> <localleader>r :call PotionCompileAndRunFile()<cr>
 nnoremap <buffer> <localleader>b :call PotionShowBytecode()<cr>
 
 function! PotionCompileAndRunFile()
+  s:SaveCurrentBuffer()
   silent !clear
   execute "!" . g:potion_command . " " . bufname("%")
 endfunction
 
 function! PotionShowBytecode()
+  s:SaveCurrentBuffer()
+
   " Get the bytecode.
   let bytecode = system(g:potion_command . " -c -V " . bufname("%"))
 
@@ -23,4 +26,8 @@ function! PotionShowBytecode()
   " Insert the bytecode.
   call append(0, split(bytecode, '\v\n'))
 
+endfunction
+
+function! s:SaveCurrentBuffer()
+  normal! :w
 endfunction
