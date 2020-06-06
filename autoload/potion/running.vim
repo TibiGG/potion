@@ -1,5 +1,3 @@
-echom "Autoloading..."
-
 function! potion#running#PotionCompileAndRunFile()
   silent !clear
   execute "!" . g:potion_command . " " . bufname("%")
